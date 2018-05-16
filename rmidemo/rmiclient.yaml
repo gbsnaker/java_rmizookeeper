@@ -1,0 +1,18 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: rmiclient-deployment
+spec:
+  selector:
+    matchLabels:
+      app: rmiclient
+  replicas: 3 # Update the replicas from 2 to 4
+  template:
+    metadata:
+      labels:
+        app: rmiclient
+    spec:
+      containers:
+      - name: rmiclient
+        image: docker.io/gbsnaker/rmiclient
+        imagePullPolicy: IfNotPresent
